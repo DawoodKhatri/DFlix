@@ -22,23 +22,27 @@ export default function Status(props) {
       <div>
         <p className={styles.title}>Budget</p>
         <p className={styles.value}>
-          {Intl.NumberFormat("en-IN", {
-            style: "currency",
-            currency: "USD",
-          })
-            .format(props.data.budget)
-            .replace("US", "")}
+          {props.data.budget
+            ? Intl.NumberFormat("en-IN", {
+                style: "currency",
+                currency: "USD",
+              })
+                .format(props.data.budget)
+                .replace("US", "")
+            : "Not Available"}
         </p>
       </div>
       <div>
         <p className={styles.title}>Revenue</p>
         <p className={styles.value}>
-          {Intl.NumberFormat("en-IN", {
-            style: "currency",
-            currency: "USD",
-          })
-            .format(props.data.revenue)
-            .replace("US", "")}
+          {props.data.revenue
+            ? Intl.NumberFormat("en-IN", {
+                style: "currency",
+                currency: "USD",
+              })
+                .format(props.data.revenue)
+                .replace("US", "")
+            : "Not Available"}
         </p>
       </div>
     </div>
