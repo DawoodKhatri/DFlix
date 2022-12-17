@@ -1,0 +1,57 @@
+.background {
+  margin: 30px;
+}
+
+.main {
+  display: flex;
+  gap: 30px;
+}
+
+.castBG {
+  flex: 3;
+  overflow: hidden;
+}
+.castT {
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 20px 0 0 30px;
+}
+.cast {
+  display: flex;
+  padding: 15px;
+  overflow-x: auto;
+}
+
+.status {
+  flex: 1;
+}
+@media only screen and (max-width: 600px) {
+
+  .background {
+    margin: 20px 10px;
+  }
+}
+@media only screen and (max-width: 800px) {
+
+  .main {
+    flex-direction: column-reverse;
+  }
+
+  .status {
+    width: 100%;
+  }
+
+  .castBG {
+    width: 100%;
+    height: fit-content;
+  }
+
+  .castT {
+    
+  margin: 20px 0 0 20px;
+  }
+  .cast {
+    padding: 10px;
+    height: fit-content;
+  }
+}

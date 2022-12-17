@@ -1,0 +1,86 @@
+.background {
+  margin: 60px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  padding: 15px;
+  width: calc(100% - 150px);
+}
+
+.background h3 {
+  margin: 0;
+  color: #00cff4;
+}
+.container {
+  display: flex;
+  height: max-content;
+  position: relative;
+}
+
+.icon {
+  width: 50px;
+  height: 75px;
+  display: flex;
+  transition: all 50ms ease-in-out;
+  z-index: 1;
+  margin: auto;
+  position: absolute;
+}
+
+.icon svg {
+  margin: auto;
+}
+
+.iconLeft {
+  left: 10px;
+  top: 97.5px;
+  fill: #fe3e0d;
+}
+
+.iconRight {
+  right: 10px;
+  top: 97.5px;
+  fill: #00cff4;
+}
+
+.iconLeft:hover {
+  fill: white;
+  background-color: #fe3e0d;
+  cursor: pointer;
+}
+
+.iconRight:hover {
+  fill: white;
+  background-color: #00cff4;
+  cursor: pointer;
+}
+
+.list {
+  display: grid;
+  grid-auto-flow: column;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* margin: 0 60px 0 60px; */
+  position: relative;
+  scroll-behavior: smooth;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  .background {
+    margin: 20px;
+    margin-bottom: 10px;
+    padding: 15px;
+    width: calc(100% - 70px);
+  }
+  .icon {
+    display: none;
+  }
+  .list {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow: scroll;
+  }
+  .list::-webkit-scrollbar {
+    display: none;
+  }
+}

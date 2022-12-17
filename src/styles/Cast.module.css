@@ -1,0 +1,42 @@
+.background {
+  flex-basis: 150px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  /* background-color: var(--color-dark); */
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+}
+
+.svg {
+  width: 100%;
+  aspect-ratio: 4/5;
+  display: flex;
+}
+
+.name {
+  font-weight: bold;
+  margin: 10px;
+  margin-bottom: 5px;
+  color: var(--color-primary);
+}
+
+.character {
+  font-size: 0.8rem;
+  margin: 0 10px;
+  margin-top: 0;
+  color: var(--color-secondary);
+}
+
+@media only screen and (max-width: 800px) {
+  .background {
+    
+  flex-basis: 125px;
+  }
+}
