@@ -16,4 +16,4 @@ $ npm install
 $ npm run start
 ```
 
-#### Live Demo - [`https://dflix.onrender.com`](https://dflix.onrender.com)
+### Live Demo - [`https://dflix.onrender.com`](https://dflix.onrender.com)
