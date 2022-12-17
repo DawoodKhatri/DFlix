@@ -1,4 +1,5 @@
 .background {
+  width: calc(100% - 60px);
   margin: 30px;
 }
 
@@ -28,6 +29,7 @@
 @media only screen and (max-width: 600px) {
 
   .background {
+    width: calc(100% - 20px);
     margin: 20px 10px;
   }
 }
