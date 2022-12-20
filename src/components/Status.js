@@ -14,9 +14,11 @@ export default function Status(props) {
       <div>
         <p className={styles.title}>Original Language</p>
         <p className={styles.value}>
-          {new Intl.DisplayNames(["en"], { type: "language" }).of(
-            props.data.original_language
-          )}
+          {!Intl.DisplayNames && props.data.original_language}
+          {Intl.DisplayNames &&
+            new Intl.DisplayNames(["en"], { type: "language" }).of(
+              props.data.original_language
+            )}
         </p>
       </div>
       <div>

@@ -10,19 +10,20 @@ export default function Info() {
   const [data, setData] = useState();
   const [cast, setCast] = useState();
   const [crew, setCrew] = useState();
-  const [mobile, setMobile] = useState()
-  const id = useParams().movie.split("-")[0];
+  const [mobile, setMobile] = useState();
+  const type = useParams().movie.split("-")[0];
+  const id = useParams().movie.split("-")[1];
   const key = "4e44d9029b1270a757cddc766a1bcb63";
   const api = "https://api.themoviedb.org/3";
 
   const setUpData = async () => {
-    var response = await fetch(`${api}/movie/${id}?api_key=${key}`);
+    var response = await fetch(`${api}/${type}/${id}?api_key=${key}`);
     var result = await response.json();
     setData(result);
   };
 
   const setUpCastCrew = async () => {
-    var response = await fetch(`${api}/movie/${id}/credits?api_key=${key}`);
+    var response = await fetch(`${api}/${type}/${id}/credits?api_key=${key}`);
     var result = await response.json();
     setCast(result.cast);
     var temp = result.crew.filter(
@@ -55,25 +56,28 @@ export default function Info() {
   useEffect(() => {
     if (!data) setUpData();
     if (!cast || !crew) setUpCastCrew();
-    if(!mobile) {
-      window.addEventListener('resize',()=>{
-        setMobile(window.innerWidth <= 800)
-      })
-      setMobile(window.innerWidth <= 800)
+    if (!mobile) {
+      window.addEventListener("resize", () => {
+        setMobile(window.innerWidth <= 800);
+      });
+      setMobile(window.innerWidth <= 800);
     }
   });
   return (
     <>
-    {!(data && cast) && <div className="loading"></div>}
-      <div className={styles.background}>
-        {data && <Details details={data} crew={crew} mobile={mobile} />}
-      </div>
-      <div className={`bg ${styles.background}`}>
-        {mobile && data && <MobileDetails details={data} crew={crew} />}
-      </div>
-
-      <div className={`${styles.background} ${styles.main}`}>
-        {cast && (
+      {data && (
+        <div className={styles.background}>
+          <Details details={data} crew={crew} mobile={mobile} />
+        </div>
+      )}
+      {mobile && data && (
+        <div className={`bg ${styles.background}`}>
+          <MobileDetails details={data} crew={crew} />
+        </div>
+      )}
+      {cast && (
+        <div className={`${styles.background} ${styles.main}`}>
+          (
           <div className={`bg ${styles.castBG}`}>
             <p className={styles.castT}>Top Cast</p>
             <div className={styles.cast}>
@@ -82,11 +86,13 @@ export default function Info() {
               })}
             </div>
           </div>
-        )}
-        <div className={`bg ${styles.status}`}>
-          {data && <Status data={data} />}
+          )
+          <div className={`bg ${styles.status}`}>
+            {data && <Status data={data} />}
+          </div>
         </div>
-      </div>
+      )}
+      {!(data && cast) && <div className="loading"></div>}
     </>
   );
 }

@@ -7,17 +7,14 @@ export default function Home(props) {
     var data = [];
 
     const key = "4e44d9029b1270a757cddc766a1bcb63";
-    const api = "https://api.themoviedb.org/3/";
+    const api = "https://api.themoviedb.org/3";
 
     for (let query of props.queries) {
-      var response = await fetch(
-        api +
-          `discover/movie?api_key=${key}&with_original_language=hi` +
-          query.value
-      );
+      var response = await fetch(api + query.value.replace("{key}", key));
       var items = await response.json();
       data.push({
         name: query.title,
+        type: query.type,
         content: items,
       });
     }
@@ -38,6 +35,7 @@ export default function Home(props) {
             <Category
               key={contents.indexOf(item)}
               title={item.name}
+              type={item.type}
               data={item.content.results}
             />
           );

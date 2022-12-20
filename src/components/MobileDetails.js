@@ -15,7 +15,8 @@ export default function MobileDetails(props) {
           {props.details.genres
             .map((genre) => genre.name + "")
             .toString()
-            .replaceAll(",", ", ")}
+            .split(",")
+            .join(", ")}
         </span>
         {props.details.runtime ? (
           <span className={styles.runtime}>
@@ -69,7 +70,7 @@ export default function MobileDetails(props) {
               <div key={props.crew.indexOf(credit)} className={styles.credit}>
                 <p className={styles.creditTitle}>{credit.name}</p>
                 <p className={styles.creditSubtitle}>
-                  {credit.jobs.toString().replaceAll(",", ", ")}
+                  {credit.jobs.toString().split(",").join(", ")}
                 </p>
               </div>
             );

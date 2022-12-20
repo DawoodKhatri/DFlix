@@ -1,6 +1,8 @@
 import Card from "./Card";
 import styles from "../styles/Category.module.css";
-import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 export default function Category(props) {
   const scroll = (e) => {
@@ -42,10 +44,12 @@ export default function Category(props) {
     if (direction === "right") {
       distance = element.getBoundingClientRect().x - 60;
     } else {
+      let elementWidth = ((window.innerWidth - 108) * 18) / 100 + 14;
       distance =
         element.getBoundingClientRect().x -
-        (Math.floor((window.innerWidth - 120) / 216) - 1) * 216 -
-        60;
+        (Math.floor((window.innerWidth - 108) / elementWidth) - 1) *
+          elementWidth -
+        54;
     }
     element.parentElement.scrollBy(distance, 0);
   };
@@ -53,49 +57,35 @@ export default function Category(props) {
     <>
       <div className={`bg ${styles.background}`}>
         <h3>{props.title}</h3>
+        <Link to={props.title.split(" ").join("-").toLowerCase()}>
+          More <FontAwesomeIcon icon={faAngleRight} size="1x" />
+        </Link>
       </div>
       <div className={styles.container}>
         <div
           className={`bg ${styles.icon} ${styles.iconLeft}`}
           onClick={scroll}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="30px"
-            style={{ transform: "scaleX(-1)" }}
-            viewBox="0 0 90 90"
-          >
-            <g>
-              <path d="M 6.241 90 c -2.196 0 -4.311 -1.209 -5.365 -3.305 c -1.489 -2.96 -0.297 -6.567 2.664 -8.056 L 70.413 45 L 3.539 11.361 c -2.96 -1.489 -4.153 -5.096 -2.664 -8.056 c 1.489 -2.959 5.095 -4.153 8.056 -2.664 L 86.46 39.64 c 2.025 1.019 3.304 3.092 3.304 5.36 s -1.278 4.341 -3.304 5.36 L 8.932 89.359 C 8.067 89.794 7.147 90 6.241 90 z" />
-            </g>
-          </svg>
+          <FontAwesomeIcon icon={faAngleLeft} size="2x" />
         </div>
         <div className={styles.list}>
-          {props.data &&
-            props.data.map((item) => {
-              return (
-                <Card
-                  key={props.data.indexOf(item)}
-                  id={props.data.indexOf(item)}
-                  title={props.title}
-                  data={item}
-                />
-              );
-            })}
+          {props.data.map((item) => {
+            return (
+              <Card
+                key={props.data.indexOf(item)}
+                id={props.data.indexOf(item)}
+                title={props.title}
+                type={props.type}
+                data={item}
+              />
+            );
+          })}
         </div>
         <div
           className={`bg ${styles.icon} ${styles.iconRight}`}
           onClick={scroll}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="30px"
-            viewBox="0 0 90 90"
-          >
-            <g>
-              <path d="M 6.241 90 c -2.196 0 -4.311 -1.209 -5.365 -3.305 c -1.489 -2.96 -0.297 -6.567 2.664 -8.056 L 70.413 45 L 3.539 11.361 c -2.96 -1.489 -4.153 -5.096 -2.664 -8.056 c 1.489 -2.959 5.095 -4.153 8.056 -2.664 L 86.46 39.64 c 2.025 1.019 3.304 3.092 3.304 5.36 s -1.278 4.341 -3.304 5.36 L 8.932 89.359 C 8.067 89.794 7.147 90 6.241 90 z" />
-            </g>
-          </svg>
+          <FontAwesomeIcon icon={faAngleRight} size="2x" />
         </div>
       </div>
     </>

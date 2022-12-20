@@ -1,15 +1,29 @@
 .background {
-  margin: 60px;
-  margin-top: 30px;
-  margin-bottom: 10px;
-  padding: 15px;
-  width: calc(100% - 150px);
+  margin: 15px 60px 10px;
+  width: calc(100% - 120px);
+  line-height: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .background h3 {
-  margin: 0;
+  margin: 15px;
   color: #00cff4;
 }
+
+.background a {
+  text-decoration: none;
+  margin: 15px;
+  font-weight: bold;
+  color: var(--color-secondary);
+}
+
+.background p:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 .container {
   display: flex;
   height: max-content;
@@ -17,8 +31,8 @@
 }
 
 .icon {
-  width: 50px;
-  height: 75px;
+  width: 40px;
+  height: 60px;
   display: flex;
   transition: all 50ms ease-in-out;
   z-index: 1;
@@ -31,56 +45,68 @@
 }
 
 .iconLeft {
-  left: 10px;
-  top: 97.5px;
-  fill: #fe3e0d;
+  left: 15px;
+  top: calc(50% - 40px);
+  color: #fe3e0d;
 }
 
 .iconRight {
-  right: 10px;
-  top: 97.5px;
-  fill: #00cff4;
+  right: 15px;
+  top: calc(50% - 40px);
+  color: #00cff4;
 }
 
 .iconLeft:hover {
-  fill: white;
+  color: white;
   background-color: #fe3e0d;
   cursor: pointer;
 }
 
 .iconRight:hover {
-  fill: white;
+  color: white;
   background-color: #00cff4;
   cursor: pointer;
 }
 
 .list {
-  display: grid;
-  grid-auto-flow: column;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  /* margin: 0 60px 0 60px; */
+  padding: 10px 54px;
   position: relative;
   scroll-behavior: smooth;
+  white-space: nowrap;
   overflow: hidden;
+  overflow-x: auto;
 }
 
-@media only screen and (max-width: 600px) {
+.list::-webkit-scrollbar {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
   .background {
-    margin: 20px;
-    margin-bottom: 10px;
-    padding: 15px;
-    width: calc(100% - 70px);
+    margin: 20px 20px 10px;
+    width: calc(100% - 40px);
   }
   .icon {
     display: none;
   }
   .list {
+    padding: 0 14px;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    overflow: scroll;
   }
   .list::-webkit-scrollbar {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .background {
+    margin: 10px 10px;
+    margin-top: 10px;
+    width: calc(100% - 20px);
+  }
+
+  .list {
+    padding: 0 7px;
   }
 }

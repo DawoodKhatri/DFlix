@@ -8,19 +8,24 @@ export default function Details(props) {
   return (
     <div className={`bg ${styles.main}`}>
       {props.details.backdrop_path && (
-        <img
-          className={styles.backdrop}
-          src={backdrop + props.details.backdrop_path}
-        />
+        <>
+          <img
+            className={styles.backdrop}
+            src={backdrop + props.details.backdrop_path}
+          />
+          <div className={styles.overlay}></div>
+        </>
       )}
       {props.details.poster_path && (
-        <img
-          className={styles.poster}
-          src={image + props.details.poster_path}
-        />
+        <div className={styles.posterContainer}>
+          <img
+            className={styles.poster}
+            src={image + props.details.poster_path}
+          />
+        </div>
       )}
       {!props.details.poster_path && (
-        <div className={styles.svg}>
+        <div className={styles.posterContainer}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             id="glyphicons-basic"
@@ -45,7 +50,8 @@ export default function Details(props) {
               {props.details.genres
                 .map((genre) => genre.name + "")
                 .toString()
-                .replaceAll(",", ", ")}
+                .split(",")
+                .join(", ")}
             </span>
             {props.details.runtime ? (
               <span className={styles.runtime}>
@@ -102,7 +108,7 @@ export default function Details(props) {
                   >
                     <p className={styles.creditTitle}>{credit.name}</p>
                     <p className={styles.creditSubtitle}>
-                      {credit.jobs.toString().replaceAll(",", ", ")}
+                      {credit.jobs.toString().split(",").join(", ")}
                     </p>
                   </div>
                 );

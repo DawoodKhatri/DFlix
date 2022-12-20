@@ -1,15 +1,15 @@
 .background {
-  width: calc(100% - 60px);
-  margin: 30px;
+  width: calc(100% - 120px);
+  margin: 30px 60px;
 }
 
 .main {
   display: flex;
-  gap: 30px;
 }
 
 .castBG {
   flex: 3;
+  margin-right: 15px;
   overflow: hidden;
 }
 .castT {
@@ -25,35 +25,56 @@
 
 .status {
   flex: 1;
+  margin-left: 15px;
 }
-@media only screen and (max-width: 600px) {
 
-  .background {
-    width: calc(100% - 20px);
-    margin: 20px 10px;
-  }
-}
 @media only screen and (max-width: 800px) {
-
   .main {
     flex-direction: column-reverse;
   }
 
   .status {
     width: 100%;
+    margin: 0;
+    margin-bottom: 7.5px;
   }
 
   .castBG {
     width: 100%;
+    margin: 0;
+    margin-top: 7.5px;
     height: fit-content;
   }
 
   .castT {
-    
-  margin: 20px 0 0 20px;
+    margin: 20px 0 0 20px;
   }
   .cast {
     padding: 10px;
     height: fit-content;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .background {
+    width: calc(100% - 40px);
+    margin: 20px;
+  }
+
+  .status {
+    margin: 0;
+    margin-bottom: 5px;
+  }
+
+  .castBG {
+    margin: 0;
+    margin-top: 7.5px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .background {
+    width: calc(100% - 20px);
+    margin: 10px;
   }
 }
