@@ -1,0 +1,48 @@
+.main {
+  /* height: calc(100% - 60px); */
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.justwatch_logo {
+  width: 200px;
+  object-fit: contain;
+}
+
+.justwatch_link {
+  color: #dfba44;
+}
+
+.attribute:hover {
+    text-decoration: underline;
+}
+
+.not_available {
+    margin: auto !important;
+    padding: 10px;
+    text-align: center;
+}
+
+.title {
+  margin: 10px 5px;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.provider {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  display: inline-block;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 800px) {
+    .main {
+      padding: 20px;
+    }
+  }
+  

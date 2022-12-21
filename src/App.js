@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CategoryView from "./components/CategoryView.js";
-import Home from "./components/Home.js";
-import Info from "./components/Info.js";
+import CategoryView from "./components/CategoryView/CategoryView.js";
+import Home from "./components/Home/Home.js";
+import Info from "./components/Info/Info.js";
 import Navbar from "./components/Navbar.js";
 
 export default function App() {
